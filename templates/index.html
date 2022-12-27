@@ -40,6 +40,7 @@
                 } else { 
                     C.open("GET", B, true) 
                 } 
+                console.log(this.postBody);
                 C.send(this.postBody) // err: Failed to load resource: the server responded with a status of 405 (Method Not Allowed)
             }
         };
@@ -47,7 +48,7 @@
         function send_magic_packet() {
 
             microAjax('/magic-packet', function (result) {
-                document.getElementById('wol_result').innerHTML = '**';//JSON.parse(result).status == 'success' ? '✓' : '✗';
+                document.getElementById('wol_result').innerHTML = JSON.parse(result).status == 'success' ? '✓' : '✗';
             }, 'mac=' + document.getElementById('wol_address').value);
         }
 
